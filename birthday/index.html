@@ -9,15 +9,6 @@
     <link rel="stylesheet" href="confetti.css">
 </head>
 <body>
-    <!-- Floating confetti -->
-    <div class="confetti" style="left: 10%; background: #e07830; animation-duration: 4s; animation-delay: 0s;"></div>
-    <div class="confetti" style="left: 20%; background: #f5c842; animation-duration: 5s; animation-delay: 1s;"></div>
-    <div class="confetti" style="left: 30%; background: #c4366e; animation-duration: 4.5s; animation-delay: 0.5s;"></div>
-    <div class="confetti" style="left: 50%; background: #e07830; animation-duration: 5.5s; animation-delay: 2s;"></div>
-    <div class="confetti" style="left: 70%; background: #f5c842; animation-duration: 4s; animation-delay: 1.5s;"></div>
-    <div class="confetti" style="left: 85%; background: #c4366e; animation-duration: 5s; animation-delay: 0.8s;"></div>
-    <div class="confetti" style="left: 95%; background: #d64580; animation-duration: 4.2s; animation-delay: 2.5s;"></div>
-
     <div class="invitation-container">
         <div class="invitation-card">
             <!-- Papel Picado Banner Section -->
@@ -73,44 +64,86 @@
                 <p class="intro-text">Please Join Us in Celebrating</p>
 
                 <h1 class="name">Sheila's</h1>
-                <h2 class="event-title">40th Birthday Fiesta.</h2>
+                <div class="age-badge">40</div>
+                <h2 class="event-title">Birthday Fiesta</h2>
+
+                <div class="divider">
+                    <span class="divider-icon">&#9733;</span>
+                </div>
 
                 <div class="details">
-                    <p>December 20th @2PM</p>
-                    <p>General Bourke - Terrace</p>
+                    <div class="detail-item">
+                        <p>December 20th @ 2PM</p>
+                    </div>
+                    <div class="detail-item">
+                        <p>General Bourke - Terrace</p>
+                    </div>
                 </div>
 
                 <div class="dress-code">
-                    <p>Dress Code: Shades of Pink, Yellow</p>
-                    <p>Orange and White</p>
+                    <p class="dress-code-title">Dress Code</p>
+                    <div class="color-palette">
+                        <span class="color-swatch pink-swatch" title="Pink"></span>
+                        <span class="color-swatch yellow-swatch" title="Yellow"></span>
+                        <span class="color-swatch orange-swatch" title="Orange"></span>
+                        <span class="color-swatch white-swatch" title="White"></span>
+                    </div>
+                    <p class="dress-code-text">Shades of Pink, Yellow, Orange & White</p>
                 </div>
 
-                <p class="cta">Let's Party!!!</p>
+                <a href="https://wa.me/61424996750?text=Hi%21%20This%20is%20confirming%20my%20RSVP%20for%20your%20birthday.%20I%20will%20be%20there.%20Thanks%20for%20the%20invite%2C%20cannot%20wait%20to%20celebrate%21" class="rsvp-btn" target="_blank">RSVP Now</a>
+
+                <p class="cta">Let's Party!</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Add more confetti dynamically
+        // Confetti - softer, more elegant
+        const colors = ['#e07830', '#f5c842', '#c4366e', '#d64580'];
+
         function createConfetti() {
-            const colors = ['#e07830', '#f5c842', '#c4366e', '#d64580'];
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.animationDuration = (4 + Math.random() * 2) + 's';
-            confetti.style.animationDelay = Math.random() * 3 + 's';
-            confetti.style.width = (5 + Math.random() * 10) + 'px';
-            confetti.style.height = confetti.style.width;
-            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-            document.body.appendChild(confetti);
+            const size = 6 + Math.random() * 8;
 
-            // Remove after animation
-            setTimeout(() => confetti.remove(), 8000);
+            // Only spawn on the sides (0-15% or 85-100% of screen width)
+            const side = Math.random() > 0.5;
+            confetti.style.left = side ? (Math.random() * 20) + '%' : (80 + Math.random() * 20) + '%';
+
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (5 + Math.random() * 4) + 's';
+            confetti.style.animationDelay = Math.random() * 1 + 's';
+            confetti.style.width = size + 'px';
+            confetti.style.height = size + 'px';
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+            confetti.style.opacity = 0.6 + Math.random() * 0.3;
+
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 10000);
         }
 
-        // Create confetti periodically
-        setInterval(createConfetti, 500);
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+
+            // Only on sides
+            const side = Math.random() > 0.5;
+            sparkle.style.left = side ? (Math.random() * 18) + '%' : (82 + Math.random() * 18) + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 1 + 's';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 4000);
+        }
+
+        // Create confetti and sparkles at a gentler pace
+        setInterval(createConfetti, 800);
+        setInterval(createSparkle, 1200);
+
+        // Gentle initial confetti
+        for (let i = 0; i < 8; i++) {
+            setTimeout(createConfetti, i * 200);
+        }
     </script>
 </body>
 </html>
