@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheila's 40th Birthday Fiesta!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="confetti.css">
+</head>
+<body>
+    <!-- Floating confetti -->
+    <div class="confetti" style="left: 10%; background: #e07830; animation-duration: 4s; animation-delay: 0s;"></div>
+    <div class="confetti" style="left: 20%; background: #f5c842; animation-duration: 5s; animation-delay: 1s;"></div>
+    <div class="confetti" style="left: 30%; background: #c4366e; animation-duration: 4.5s; animation-delay: 0.5s;"></div>
+    <div class="confetti" style="left: 50%; background: #e07830; animation-duration: 5.5s; animation-delay: 2s;"></div>
+    <div class="confetti" style="left: 70%; background: #f5c842; animation-duration: 4s; animation-delay: 1.5s;"></div>
+    <div class="confetti" style="left: 85%; background: #c4366e; animation-duration: 5s; animation-delay: 0.8s;"></div>
+    <div class="confetti" style="left: 95%; background: #d64580; animation-duration: 4.2s; animation-delay: 2.5s;"></div>
+
+    <div class="invitation-container">
+        <div class="invitation-card">
+            <!-- Papel Picado Banner Section -->
+            <div class="papel-picado">
+                <!-- Row 1 - Orange -->
+                <div class="banner-row banner-row-1">
+                    <div class="string"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                    <div class="flag orange"></div>
+                </div>
+
+                <!-- Row 2 - Yellow -->
+                <div class="banner-row banner-row-2">
+                    <div class="string"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                    <div class="flag yellow"></div>
+                </div>
+
+                <!-- Row 3 - Pink/Magenta -->
+                <div class="banner-row banner-row-3">
+                    <div class="string"></div>
+                    <div class="flag pink"></div>
+                    <div class="flag magenta"></div>
+                    <div class="flag pink"></div>
+                    <div class="flag magenta"></div>
+                    <div class="flag pink"></div>
+                    <div class="flag magenta"></div>
+                    <div class="flag pink"></div>
+                    <div class="flag magenta"></div>
+                    <div class="flag pink"></div>
+                    <div class="flag magenta"></div>
+                </div>
+            </div>
+
+            <!-- Invitation Content -->
+            <div class="content">
+                <p class="intro-text">Please Join Us in Celebrating</p>
+
+                <h1 class="name">Sheila's</h1>
+                <h2 class="event-title">40th Birthday Fiesta.</h2>
+
+                <div class="details">
+                    <p>December 20th @2PM</p>
+                    <p>General Bourke - Terrace</p>
+                </div>
+
+                <div class="dress-code">
+                    <p>Dress Code: Shades of Pink, Yellow</p>
+                    <p>Orange and White</p>
+                </div>
+
+                <p class="cta">Let's Party!!!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add more confetti dynamically
+        function createConfetti() {
+            const colors = ['#e07830', '#f5c842', '#c4366e', '#d64580'];
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (4 + Math.random() * 2) + 's';
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.width = (5 + Math.random() * 10) + 'px';
+            confetti.style.height = confetti.style.width;
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            document.body.appendChild(confetti);
+
+            // Remove after animation
+            setTimeout(() => confetti.remove(), 8000);
+        }
+
+        // Create confetti periodically
+        setInterval(createConfetti, 500);
+    </script>
+</body>
+</html>

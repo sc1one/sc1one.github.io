@@ -1,0 +1,30 @@
+/* Confetti Animation Styles */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .name {
+        font-size: 36px;
+    }
+    .event-title {
+        font-size: 28px;
+    }
+    .content {
+        padding: 30px 20px 40px;
+    }
+}

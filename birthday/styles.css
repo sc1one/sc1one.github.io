@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff5f5 0%, #fffaf0 50%, #fff5f8 100%);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.invitation-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.invitation-card {
+    background: #faf8f5;
+    border-radius: 8px;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Papel Picado Banner */
+.papel-picado {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #f5f3f0 0%, #faf8f5 100%);
+}
+
+.banner-row {
+    position: absolute;
+    width: 120%;
+    left: -10%;
+    display: flex;
+}
+
+.banner-row-1 {
+    top: 10px;
+    transform: rotate(-3deg);
+}
+
+.banner-row-2 {
+    top: 60px;
+    transform: rotate(2deg);
+}
+
+.banner-row-3 {
+    top: 120px;
+    transform: rotate(-1deg);
+}
+
+.flag {
+    width: 80px;
+    height: 70px;
+    position: relative;
+    margin: 0 -5px;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.flag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+}
+
+.flag::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+}
+
+.flag.orange { background: #e07830; }
+.flag.yellow { background: #f5c842; }
+.flag.pink { background: #c4366e; }
+.flag.magenta { background: #d64580; }
+
+.flag .cutout {
+    position: absolute;
+    background: rgba(255,255,255,0.25);
+}
+
+.string {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #8b7355;
+}
+
+/* Content Styles */
+.content {
+    padding: 40px 30px 50px;
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #666;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.name {
+    font-family: 'Pacifico', cursive;
+    font-size: 48px;
+    color: #c4366e;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(196, 54, 110, 0.2);
+}
+
+.event-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    color: #c4366e;
+    margin-bottom: 30px;
+}
+
+.details {
+    margin-bottom: 25px;
+}
+
+.details p {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #555;
+    margin: 8px 0;
+    text-transform: uppercase;
+}
+
+.dress-code {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(245, 200, 66, 0.1);
+    border-radius: 8px;
+}
+
+.dress-code p {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #666;
+    text-transform: uppercase;
+    line-height: 1.8;
+}
+
+.cta {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #c4366e;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
