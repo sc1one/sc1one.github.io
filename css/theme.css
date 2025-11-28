@@ -1,0 +1,43 @@
+/* Theme Variables */
+
+/* Dark Theme (Default) */
+.theme-dark {
+    --bg-color: #0d1117;
+    --text-color: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent-color: #58a6ff;
+}
+
+.theme-dark body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.theme-dark .icon-sun {
+    display: block;
+}
+
+.theme-dark .icon-moon {
+    display: none;
+}
+
+/* Light Theme */
+.theme-light {
+    --bg-color: #ffffff;
+    --text-color: #1f2328;
+    --text-secondary: #656d76;
+    --accent-color: #0969da;
+}
+
+.theme-light body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.theme-light .icon-sun {
+    display: none;
+}
+
+.theme-light .icon-moon {
+    display: block;
+}
