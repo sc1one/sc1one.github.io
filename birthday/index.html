@@ -91,6 +91,16 @@
                     <p class="dress-code-text">Shades of Pink, Yellow, Orange & White</p>
                 </div>
 
+                <!-- Gift Registry Section -->
+                <div class="registry-section">
+                    <h3 class="registry-title">Gift Registry</h3>
+                    <p class="registry-intro">Your presence is the best present! But if you'd like to get something, here is a wish list:</p>
+                    <div id="gift-list" class="gift-grid">
+                        <!-- Gifts will be loaded here by JS -->
+                        <div class="loading-gifts">Loading gifts...</div>
+                    </div>
+                </div>
+
                 <a href="https://wa.me/61424996750?text=Hi%21%20This%20is%20confirming%20my%20RSVP%20for%20your%20birthday.%20I%20will%20be%20there.%20Thanks%20for%20the%20invite%2C%20cannot%20wait%20to%20celebrate%21" class="rsvp-btn" target="_blank">RSVP Now</a>
 
                 <p class="cta">Let's Party!</p>
@@ -145,5 +155,6 @@
             setTimeout(createConfetti, i * 200);
         }
     </script>
+    <script type="module" src="registry.js"></script>
 </body>
 </html>
