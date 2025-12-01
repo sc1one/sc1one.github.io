@@ -54,8 +54,8 @@ function renderGiftCard(id, gift) {
     const card = document.createElement('div');
     card.className = `gift-card ${gift.reserved ? 'reserved' : ''}`;
 
-    const statusBadge = gift.reserved 
-        ? `<span class="badge taken">Taken by ${escapeHtml(gift.reservedByName)}</span>` 
+    const statusBadge = gift.reserved
+        ? `<span class="badge taken">Bought</span>`
         : `<span class="badge available">Available</span>`;
 
     const actionButton = gift.reserved
@@ -77,14 +77,62 @@ function renderGiftCard(id, gift) {
     giftListElement.appendChild(card);
 }
 
+// Show reservation modal and return { name, email } or null if cancelled
+function showReserveModal() {
+    return new Promise((resolve) => {
+        const overlay = document.createElement('div');
+        overlay.className = 'reserve-modal-overlay';
+        overlay.innerHTML = `
+            <div class="reserve-modal">
+                <h3>Reserve This Gift</h3>
+                <label for="reserve-name">Full Name</label>
+                <input type="text" id="reserve-name" placeholder="Your full name" />
+                <label for="reserve-email">Email</label>
+                <input type="email" id="reserve-email" placeholder="your@email.com" />
+                <div class="reserve-modal-buttons">
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="button" class="btn-confirm">Reserve</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const nameInput = overlay.querySelector('#reserve-name');
+        const emailInput = overlay.querySelector('#reserve-email');
+        const cancelBtn = overlay.querySelector('.btn-cancel');
+        const confirmBtn = overlay.querySelector('.btn-confirm');
+
+        nameInput.focus();
+
+        const close = (result) => {
+            overlay.remove();
+            resolve(result);
+        };
+
+        cancelBtn.onclick = () => close(null);
+        overlay.onclick = (e) => { if (e.target === overlay) close(null); };
+
+        confirmBtn.onclick = () => {
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            if (!name || !email) {
+                alert('Please enter both name and email.');
+                return;
+            }
+            close({ name, email });
+        };
+    });
+}
+
 // Make reserve function available globally so the onclick handler can find it
 window.reserveGift = async function(giftId) {
-    const name = prompt("Please enter your name to reserve this gift:");
-    
-    if (!name || name.trim() === "") {
-        return; // User cancelled or entered empty name
+    const result = await showReserveModal();
+
+    if (!result) {
+        return; // User cancelled
     }
 
+    const { name, email } = result;
     const giftRef = doc(db, "gifts", giftId);
 
     try {
@@ -102,11 +150,12 @@ window.reserveGift = async function(giftId) {
             transaction.update(giftRef, {
                 reserved: true,
                 reservedByName: name.trim(),
+                reservedByEmail: email.trim(),
                 reservedAt: serverTimestamp()
             });
         });
 
-        alert(`Success! You have reserved the ${name}.`);
+        alert("Success! You have reserved this gift.");
         loadGifts(); // Reload to show updated status
 
     } catch (e) {
